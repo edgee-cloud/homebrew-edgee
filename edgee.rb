@@ -2,7 +2,7 @@ class Edgee < Formula
   desc "The full-stack edge platform for your edge-oriented applications."
   homepage "https://github.com/edgee-cloud/edgee"
   url "https://github.com/edgee-cloud/edgee/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "8b38aa5383a274669cda491e0bb96f052d315ef60a5cb17f0a1116438b0ec60b"
+  sha256 "77b3e579295fcbc150d6e325f34278dcd16be3d7c13cda0657015408f122c021"
   license "Apache-2.0"
   head "https://github.com/edgee-cloud/edgee.git", branch: "main"
 

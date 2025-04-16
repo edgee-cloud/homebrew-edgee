@@ -43,7 +43,12 @@ rm $PREVIOUS_RELEASE.tar.gz
 
 # commit and push the changes to a new branch
 echo "Committing and pushing..."
+git config --global user.email "tech@edgee.cloud"
+git config --global user.name "Edgee team"
 git checkout -b release-$NEW_RELEASE
+git add edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
+touch test.txt
+git add test.txt
 git commit -a -m "Release $NEW_RELEASE"
 git push origin release-$NEW_RELEASE
 

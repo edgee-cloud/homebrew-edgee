@@ -46,6 +46,9 @@ runs:
         # update previous release formula with the correct sha256sum
         # we use the re-computed SHA256 to make this script idempotent
         echo "Updating $PREVIOUS_RELEASE formula with the correct sha256sum..."
+        ls
+        echo "SHA: $PREVIOUS_SHA256_SUM"
+        echo "FILE: ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb"
         sed -i '' -e "s|sha256 \".*\"|sha256 \"$PREVIOUS_SHA256_SUM\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
         sed -i '' -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$PREVIOUS_RELEASE.tar.gz\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
 

@@ -15,7 +15,7 @@ runs:
           path: 'homebrew-edgee'
 
     # access the correct folder
-    - run: cd homebrew-edgee
+    - run: cd $GITHUB_WORKSPACE/homebrew-edgee
       shell: bash
 
     # create and update local files

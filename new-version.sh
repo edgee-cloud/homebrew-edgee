@@ -1,5 +1,8 @@
 #! /bin/bash -x
 
+pwd
+ls
+
 # define previous/current release variables
 PREVIOUS_RELEASE=$(gh release list --repo edgee-cloud/edgee --limit 2 --json tagName --jq '.[1].tagName')
 PREVIOUS_RELEASE_WITHOUT_V=$(echo $PREVIOUS_RELEASE | sed -e "s/v//g")

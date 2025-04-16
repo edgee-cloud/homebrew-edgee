@@ -21,6 +21,8 @@ runs:
           GH_TOKEN: ${{ inputs.ACTION_GH_TOKEN }}
       run: |
         cd $GITHUB_WORKSPACE/homebrew-edgee
+        pwd
+        ls
       
         # define previous/current release variables
         PREVIOUS_RELEASE=$(gh release list --repo edgee-cloud/edgee --limit 2 --json tagName --jq '.[1].tagName')

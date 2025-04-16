@@ -1,5 +1,9 @@
 name: 'Release Edgee CLI to Homebrew'
 description: 'Update the edgee-cloud/homebrew-edgee repository with the latest release of Edgee CLI to Homebrew'
+inputs:
+  ACTION_GH_TOKEN: 
+     description: "The GitHub Token used to push and create a new PR"
+     required: true
 runs:
   using: "composite"
   steps:
@@ -16,4 +20,4 @@ runs:
       run: ./new-version.sh
       shell: bash
       env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ inputs.ACTION_GH_TOKEN }}

@@ -21,5 +21,5 @@ runs:
           GH_TOKEN: ${{ inputs.ACTION_GH_TOKEN }}
       run: |
         cd homebrew-edgee
-        chmox +x ./new-version.sh
+        chmod +x ./new-version.sh
         ./new-version.sh

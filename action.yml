@@ -17,9 +17,10 @@ runs:
     # create and update local files
     - name: Update files, commit, push, and open PR
       shell: bash
+      working-directory: homebrew-edgee
       env:
           GH_TOKEN: ${{ inputs.ACTION_GH_TOKEN }}
       run: |
-        cd homebrew-edgee
-        chmod +x ./new-version.sh
-        ./new-version.sh
+        echo "::group::new-version.sh"
+        bash new-version.sh
+        echo "::endgroup::"

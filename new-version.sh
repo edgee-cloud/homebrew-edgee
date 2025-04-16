@@ -47,4 +47,4 @@ git push origin $NEW_BRANCH
 
 # create a pull request
 echo "Creating pull request..."
-gh pr create --base main --head release-$NEW_RELEASE --title "Release $NEW_RELEASE" --body "Release $NEW_RELEASE"
+gh pr create --base main --head $NEW_BRANCH --title "Release $NEW_RELEASE" --body "Release $NEW_RELEASE"

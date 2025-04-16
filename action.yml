@@ -70,6 +70,7 @@ runs:
         git checkout -b release-$NEW_RELEASE
         git add edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
         touch test.txt
+        git add test.txt
         git commit -a -m "Release $NEW_RELEASE"
         git push origin release-$NEW_RELEASE
 

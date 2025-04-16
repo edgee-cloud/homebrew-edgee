@@ -39,12 +39,13 @@ rm $PREVIOUS_RELEASE.tar.gz
 echo "::debug::Committing and pushing..."
 git config --global user.email "tech@edgee.cloud"
 git config --global user.name "Edgee team"
-git checkout -b release-$NEW_RELEASE
+NEW_BRANCH=gha-release-$NEW_RELEASE
+git checkout -b $NEW_BRANCH
 git add edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
 touch test.txt
 git add test.txt
 git commit -a -m "Release $NEW_RELEASE"
-git push origin release-$NEW_RELEASE
+git push origin $NEW_BRANCH
 
 # create a pull request
 echo "::debug::Creating pull request..."

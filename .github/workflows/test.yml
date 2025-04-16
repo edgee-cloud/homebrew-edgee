@@ -1,0 +1,11 @@
+name: Run tests
+on:
+  pull_request:
+
+jobs:
+  test:
+    name: GHA test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: edgee-cloud/homebrew-edgee@gh-action-automation
+

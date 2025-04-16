@@ -14,7 +14,10 @@ runs:
           ref: main
           path: 'homebrew-edgee'
 
-    - uses: cd homebrew-edgee
+    # access the correct folder
+    - run: cd homebrew-edgee
+      shell: bash
+
     # create and update local files
     - name: Update files, commit, push, and open PR
       run: ./new-version.sh

@@ -22,5 +22,5 @@ runs:
           GH_TOKEN: ${{ inputs.ACTION_GH_TOKEN }}
       run: |
         echo "::group::new-version.sh"
-        bash new-version.sh
+        bash -x new-version.sh
         echo "::endgroup::"

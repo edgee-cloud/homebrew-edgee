@@ -14,13 +14,11 @@ runs:
           ref: main
           path: 'homebrew-edgee'
 
-    # access the correct folder
-    - run: cd $GITHUB_WORKSPACE/homebrew-edgee
-      shell: bash
-
     # create and update local files
     - name: Update files, commit, push, and open PR
-      run: ./new-version.sh
+      run: >
+        cd $GITHUB_WORKSPACE/homebrew-edgee
+        bash ./new-version.sh
       shell: bash
       env:
           GH_TOKEN: ${{ inputs.ACTION_GH_TOKEN }}

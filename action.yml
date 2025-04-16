@@ -1,0 +1,19 @@
+name: 'Release Edgee CLI to Homebrew'
+description: 'Update the edgee-cloud/homebrew-edgee repository with the latest release of Edgee CLI to Homebrew'
+runs:
+  using: "composite"
+  steps:
+    # check out this repo
+    - uses: actions/checkout@v4
+      with:
+          repository: edgee-cloud/homebrew-edgee
+          ref: main
+          path: 'homebrew-edgee'
+
+    - uses: cd homebrew-edgee
+    # create and update local files
+    - name: Update files, commit, push, and open PR
+      run: ./new-version.sh
+      shell: bash
+      env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -7,14 +7,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # check out this repo
+    # check out this repo, starting from the main branch
     - uses: actions/checkout@v4
       with:
           repository: edgee-cloud/homebrew-edgee
-          ref: gh-action-automation
+          ref: main
           path: 'homebrew-edgee'
 
-    # create and update local files
+    # create and update local files, push to new branch, and open a PR
     - name: Update files, commit, push, and open PR
       shell: bash
       working-directory: homebrew-edgee

@@ -40,8 +40,6 @@ git config --global user.name "Edgee team"
 NEW_BRANCH=edgee-release-$NEW_RELEASE
 git checkout -b $NEW_BRANCH
 git add edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
-touch test.txt
-git add test.txt
 git commit -a -m "Release $NEW_RELEASE"
 git push origin $NEW_BRANCH
 

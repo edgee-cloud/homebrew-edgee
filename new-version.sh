@@ -33,6 +33,10 @@ echo "Cleaning up temporary files..."
 rm $NEW_RELEASE.tar.gz
 rm $PREVIOUS_RELEASE.tar.gz
 
+# this is needed to make this GHA work from another repo
+# see https://stackoverflow.com/a/69979203
+git config --unset-all http.https://github.com/.extraheader
+
 # commit and push the changes to a new branch
 echo "Committing and pushing..."
 git config --global user.email "tech@edgee.cloud"

@@ -1,0 +1,25 @@
+name: 'Release Edgee CLI to Homebrew'
+
+on: workflow_dispatch
+
+description: 'Update the edgee-cloud/homebrew-edgee repository with the latest release of Edgee CLI to Homebrew'
+
+jobs:
+  create-pull-request:
+    name: Create new PR
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      # check out this repo
+      - uses: actions/checkout@v4
+
+      # create and update local files, push to new branch, and open a PR
+      - name: Update files, commit, push, and open PR
+        shell: bash
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "::group::new-version.sh"
+          bash new-version.sh
+          echo "::endgroup::"

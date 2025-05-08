@@ -17,21 +17,28 @@ PREVIOUS_SHA256_SUM=$(sha256sum $PREVIOUS_RELEASE.tar.gz | cut -c1-64)
 echo "Creating new formula file for $PREVIOUS_RELEASE..."
 cp edgee.rb edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
 
-SEDOPTION="-i"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    SEDOPTION="-i ''"
-fi
-
 # update previous release formula with the correct sha256sum
 # we use the re-computed SHA256 to make this script idempotent
 echo "Updating $PREVIOUS_RELEASE formula with the correct sha256sum..."
-sed $SEDOPTION -e "s|sha256 \".*\"|sha256 \"$PREVIOUS_SHA256_SUM\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
-sed $SEDOPTION -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$PREVIOUS_RELEASE.tar.gz\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
+if [[ "$OSTYPE" == "darwin"* ]];
+then
+    sed -i '' -e "s|sha256 \".*\"|sha256 \"$PREVIOUS_SHA256_SUM\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
+    sed -i '' -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$PREVIOUS_RELEASE.tar.gz\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
+else
+    sed -i -e "s|sha256 \".*\"|sha256 \"$PREVIOUS_SHA256_SUM\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
+    sed -i -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$PREVIOUS_RELEASE.tar.gz\"|g" ./edgee@$PREVIOUS_RELEASE_WITHOUT_V.rb
+fi
 
 # update edgee.rb with the latest
 echo "Updating edgee.rb with the $NEW_RELEASE sha256sum..."
-sed $SEDOPTION -e "s|sha256 \".*\"|sha256 \"$NEW_SHA256_SUM\"|g" ./edgee.rb
-sed $SEDOPTION -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$NEW_RELEASE.tar.gz\"|g" ./edgee.rb
+if [[ "$OSTYPE" == "darwin"* ]];
+then
+    sed -i '' -e "s|sha256 \".*\"|sha256 \"$NEW_SHA256_SUM\"|g" ./edgee.rb
+    sed -i '' -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$NEW_RELEASE.tar.gz\"|g" ./edgee.rb
+else
+    sed -i -e "s|sha256 \".*\"|sha256 \"$NEW_SHA256_SUM\"|g" ./edgee.rb
+    sed -i -e "s|url \".*\"|url \"https://github.com/edgee-cloud/edgee/archive/refs/tags/$NEW_RELEASE.tar.gz\"|g" ./edgee.rb
+fi
 
 # clean up temporary gz files
 echo "Cleaning up temporary files..."

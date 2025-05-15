@@ -2,14 +2,14 @@ name: 'Release Edgee CLI to Homebrew'
 
 on: workflow_dispatch
 
-description: 'Update the edgee-cloud/homebrew-edgee repository with the latest release of Edgee CLI to Homebrew'
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   create-pull-request:
     name: Create new PR
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     steps:
       # check out this repo
       - uses: actions/checkout@v4
